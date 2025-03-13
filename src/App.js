@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import GradientSlide from './GradientSlide';
+import LoginForm from './LoginForm';
+import './styles.css';
 
 function App() {
+  const [isShifted, setIsShifted] = useState(false);
+
+  const shiftContainer = () => {
+    setIsShifted(!isShifted);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <GradientSlide isShifted={isShifted} />
+      <LoginForm type="member" shiftContainer={shiftContainer} />
+      <LoginForm type="admin" shiftContainer={shiftContainer} />
     </div>
   );
 }
